@@ -20,29 +20,19 @@ source_group("Source Files" FILES ${SOURCE_FILES})
 
 add_executable(standard-2d-tutorial ${SOURCE_FILES})
 
+set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT standard-2d-tutorial)
+
 if (MSVC)
-    file(
-        COPY ${CMAKE_SOURCE_DIR}/lib/glew-1.13.0-win32.zip
-        DESTINATION ${CMAKE_BINARY_DIR}
-    )
     execute_process(
-        COMMAND ${CMAKE_COMMAND} -E tar xfz ${CMAKE_BINARY_DIR}/glew-1.13.0-win32.zip
+        COMMAND ${CMAKE_COMMAND} -E tar xfz ${CMAKE_SOURCE_DIR}/lib/glew-1.13.0-win32.zip
         WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
     )
-    file(
-        COPY ${CMAKE_SOURCE_DIR}/lib/glfw-3.1.2.bin.WIN32.zip
-        DESTINATION ${CMAKE_BINARY_DIR}
-    )
     execute_process(
-        COMMAND ${CMAKE_COMMAND} -E tar xfz ${CMAKE_BINARY_DIR}/glfw-3.1.2.bin.WIN32.zip
+        COMMAND ${CMAKE_COMMAND} -E tar xfz ${CMAKE_SOURCE_DIR}/lib/glfw-3.1.2.bin.WIN32.zip
         WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
     )
-    file(
-        COPY ${CMAKE_SOURCE_DIR}/lib/glm-0.9.7.1.zip
-        DESTINATION ${CMAKE_BINARY_DIR}
-    )
     execute_process(
-        COMMAND ${CMAKE_COMMAND} -E tar xfz ${CMAKE_BINARY_DIR}/glm-0.9.7.1.zip
+        COMMAND ${CMAKE_COMMAND} -E tar xfz ${CMAKE_SOURCE_DIR}/lib/glm-0.9.7.1.zip
         WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
     )
 
